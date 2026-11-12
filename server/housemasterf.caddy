@@ -1,0 +1,34 @@
+# Housemaster F – kopieres til /etc/caddy/sites/housemasterf.caddy av server/deploy.sh.
+# Herahs install.sh tar med alle filer i /etc/caddy/sites/ og overskriver dem aldri.
+housemasterf.frodewerner.no {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		# Spillerne (SoundCloud, Mixcloud, Spotify, YouTube) lastes først når noen trykker «Spill av»
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://w.soundcloud.com https://player-widget.mixcloud.com https://open.spotify.com https://www.youtube-nocookie.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'"
+		-Server
+	}
+
+	# Innholdet og bookingskjemaet kommer fra Herah (api/housemaster.ts i Phroden/data)
+	handle /api/housemaster* {
+		reverse_proxy 127.0.0.1:8080
+	}
+
+	handle {
+		root * /srv/housemasterf/public
+		@long path /fonts/* /img/*
+		header @long Cache-Control "public, max-age=604800"
+		@short path / /index.html /style.css /app.js
+		header @short Cache-Control "no-cache"
+		file_server
+	}
+}
+
+# www. og den gamle stavemåten sendes til riktig adresse (fjern linjene hvis du ikke lager DNS for dem)
+# www.housemasterf.frodewerner.no {
+# 	redir https://housemasterf.frodewerner.no{uri} permanent
+# }

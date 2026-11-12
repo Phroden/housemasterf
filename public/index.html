@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Housemaster F – DJ og produsent</title>
+<meta name="description" content="Housemaster F: house, disco og EDM bak platespillerne. Egne låter, DJ-mixer, spillejobber og booking.">
+<meta name="theme-color" content="#0E0D0C">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Housemaster F – DJ og produsent">
+<meta property="og:description" content="House, disco og EDM. Egne låter, DJ-mixer, spillejobber og booking.">
+<meta property="og:image" content="https://housemasterf.frodewerner.no/img/og.jpg">
+<meta property="og:url" content="https://housemasterf.frodewerner.no/">
+<link rel="canonical" href="https://housemasterf.frodewerner.no/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/unbounded-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#musikk">Hopp til innholdet</a>
+
+<section id="top" class="hero">
+  <header>
+    <nav class="nav wrap" aria-label="Hovedmeny">
+      <a href="#top" class="nav-logo"><img src="/img/logo-nav.webp" alt="DJ Housemaster F – til toppen" width="122" height="96"></a>
+      <div class="nav-links">
+        <a href="#musikk" data-nav="laater">Musikk</a>
+        <a href="#mixer" data-nav="mixer">Mixer</a>
+        <a href="#live">Live</a>
+        <a href="#om">Om</a>
+        <a href="#booking" class="pill pill-accent">Booking</a>
+      </div>
+    </nav>
+  </header>
+  <div class="hero-spacer"></div>
+  <div class="hero-text wrap">
+    <p class="eyebrow" data-text="tagline">DJ · Produsent · Disco-sjel</p>
+    <h1 class="hero-title">House<span class="c-pink">master</span><span class="c-accent">&#160;F</span></h1>
+    <p class="hero-intro" data-text="intro">House, disco og EDM bak platespillerne. Egne låter som ikke helt lar seg plassere i en bås – men som alltid får folk ut på gulvet.</p>
+    <div class="hero-btns">
+      <a href="#mixer" class="btn btn-accent" data-nav="mixer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"></path></svg>Hør siste mix</a>
+      <a href="#booking" class="btn btn-ghost">Book et sett</a>
+    </div>
+  </div>
+</section>
+
+<div class="stripes" aria-hidden="true"><i class="bg-accent"></i><i class="bg-pink"></i><i class="bg-teal"></i></div>
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker">HOUSE ✦ DISCO ✦ EDM ✦ NU-DISCO ✦ FRENCH TOUCH ✦ UDEFINERBART ✦</div></div>
+<div class="stripes" aria-hidden="true"><i class="bg-teal"></i><i class="bg-pink"></i><i class="bg-accent"></i></div>
+
+<main>
+<section id="musikk" class="sec wrap" hidden>
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow">01 — Egne låter</p>
+      <h2>Fra studioet</h2>
+    </div>
+    <a href="#" class="btn btn-sc" id="sc-follow" hidden target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 15v2M6 12v5M9 10v7M12 8v9"></path><path d="M14 8.5a5 5 0 0 1 7 4.5 3 3 0 0 1-3 4h-4z"></path></svg>Følg på SoundCloud</a>
+  </div>
+  <div class="tracks" id="tracks"></div>
+</section>
+
+<section id="mixer" class="sec wrap" hidden>
+  <p class="eyebrow">02 — DJ-mixer</p>
+  <h2 class="mb">Siste mix</h2>
+  <div class="mix-feature" id="mix-feature">
+    <div class="mix-info">
+      <span class="mix-meta" id="mix-meta"></span>
+      <h3 id="mix-title"></h3>
+      <p id="mix-desc"></p>
+    </div>
+    <div class="mix-play">
+      <button type="button" class="mix-btn" id="mix-btn" aria-label="Spill av mix"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"></path></svg></button>
+      <svg class="wave" viewBox="0 0 300 64" preserveAspectRatio="none" aria-hidden="true"><g id="wave"></g></svg>
+    </div>
+    <div class="mix-embed" id="mix-embed" hidden></div>
+    <div class="mix-stripes" aria-hidden="true"><i class="bg-pink"></i><i class="bg-teal"></i></div>
+  </div>
+  <div class="mix-list" id="mix-list"></div>
+</section>
+
+<section id="live" class="sec wrap">
+  <p class="eyebrow">03 — Kommende spillejobber</p>
+  <h2 class="mb-s">Live</h2>
+  <ul class="gigs" id="gigs"><li class="gig-empty">Henter spillejobbene …</li></ul>
+</section>
+
+<section id="om" class="sec wrap om">
+  <div class="om-img"><img src="/img/logo.webp" alt="DJ Housemaster F-logo: to løver rundt et rosa hjerte med en vinylplate" width="800" height="800" loading="lazy"></div>
+  <div class="om-text">
+    <p class="eyebrow">04 — Om</p>
+    <h2><span data-text="om_tittel">Fire-på-gulvet,</span><br><span class="c-pink" data-text="om_uthevet">alltid.</span></h2>
+    <div id="om-paras">
+      <p>Housemaster F er DJ-alteregoet til Frode Werner. Settene henter fra house, disco og EDM – fra varme discosamples til store drops – og bygges for å holde dansegulvet fullt fra første til siste låt.</p>
+      <p>De egne produksjonene er vanskeligere å sette merkelapp på: elektroniske, groovy og laget for å danses til.</p>
+    </div>
+    <div class="tags" id="tags"><span class="tag bg-accent">House</span><span class="tag bg-pink">Disco</span><span class="tag bg-teal">Nu-disco</span><span class="tag bg-cream">EDM</span><span class="tag tag-line">Udefinerbart dansbart</span></div>
+  </div>
+</section>
+
+<section id="booking" class="sec wrap sec-last">
+  <div class="booking">
+    <svg class="ball" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#9C94C6"></circle><rect x="34" y="26" width="16" height="12" class="f-teal"></rect><rect x="50" y="50" width="16" height="12" class="f-pink"></rect><rect x="18" y="62" width="16" height="12" class="f-accent"></rect><g fill="none" stroke="#0E0D0C" stroke-width="2.5"><line x1="10.8" y1="26" x2="89.2" y2="26"></line><line x1="5.6" y1="38" x2="94.4" y2="38"></line><line x1="4" y1="50" x2="96" y2="50"></line><line x1="5.6" y1="62" x2="94.4" y2="62"></line><line x1="10.8" y1="74" x2="89.2" y2="74"></line><line x1="50" y1="4" x2="50" y2="96"></line><ellipse cx="50" cy="50" rx="16" ry="46"></ellipse><ellipse cx="50" cy="50" rx="32" ry="46"></ellipse><circle cx="50" cy="50" r="46"></circle></g><circle cx="32" cy="28" r="6" fill="#FFFFFF" opacity="0.75"></circle></svg>
+    <div class="booking-text">
+      <p class="eyebrow">05 — Booking</p>
+      <h2 class="big" id="booking-title">Trenger festen en <span class="c-accent">DJ?</span></h2>
+      <p class="lead" data-text="booking_tekst">Klubb, bar, firmafest eller bursdag – send noen ord om dato, sted og stemning, så tar jeg kontakt.</p>
+      <p class="muted" id="booking-mail" hidden>E-post: <a href="#"></a></p>
+    </div>
+    <form class="form" id="booking-form" novalidate>
+      <div class="row">
+        <label>Navn<input type="text" name="navn" autocomplete="name" required maxlength="100"></label>
+        <label>E-post<input type="email" name="epost" autocomplete="email" required maxlength="200"></label>
+      </div>
+      <div class="row">
+        <label>Dato<input type="date" name="dato"></label>
+        <label>Type arrangement<select name="type"><option>Klubb / bar</option><option>Firmafest</option><option>Privat fest</option><option>Annet</option></select></label>
+      </div>
+      <label>Melding<textarea name="melding" rows="4" required maxlength="4000" placeholder="Dato, sted, antall gjester og stemning"></textarea></label>
+      <label class="hp" aria-hidden="true">Nettside (la stå tom)<input type="text" name="nettside" tabindex="-1" autocomplete="off"></label>
+      <div class="form-foot">
+        <button type="submit" class="btn btn-accent">Send forespørsel</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+      <p class="form-note">Navnet, e-posten og meldingen brukes bare til å svare deg.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<div class="stripes" aria-hidden="true"><i class="bg-accent"></i><i class="bg-pink"></i><i class="bg-teal"></i></div>
+<footer class="footer">
+  <div class="wrap footer-in">
+    <img class="footer-logo" src="/img/logo.webp" alt="DJ Housemaster F" width="110" height="80" loading="lazy">
+    <div class="footer-links" id="footer-links"></div>
+    <span>© <span id="year">2026</span> Housemaster F</span>
+  </div>
+</footer>
+</body>
+</html>
