@@ -214,8 +214,9 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
 /* Egen logo lastet opp i Herah */
 .custom-logo .om-img img { object-fit: contain; padding: 28px; }
 .custom-logo .footer-logo { object-fit: contain; object-position: center; }
-.custom-logo .nav-logo img { max-height: 180px; width: auto; max-width: 260px; }
+/* Fast høyde, så også små bilder blir store (bredden følger bildet, men høyst 280 px) */
+.custom-logo .nav-logo img { height: 170px; width: auto; max-width: 280px; object-fit: contain; object-position: left center; }
 @media (max-width: 720px) {
   .nav-logo img { width: 150px; }
-  .custom-logo .nav-logo img { max-height: 130px; max-width: 190px; }
+  .custom-logo .nav-logo img { height: 120px; max-width: 200px; object-position: center; }
 }
