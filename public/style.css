@@ -210,3 +210,8 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
   .ball { right: 24px; }
   .gig-date { flex-basis: 100%; flex-direction: row; align-items: baseline; gap: 12px; }
 }
+
+/* Egen logo lastet opp i Herah */
+.custom-logo .om-img img { object-fit: contain; padding: 28px; }
+.custom-logo .footer-logo { object-fit: contain; object-position: center; }
+.custom-logo .nav-logo img { max-height: 110px; width: auto; max-width: 160px; }

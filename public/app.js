@@ -104,6 +104,11 @@ function setTexts(s) {
     p.hidden = false;
   }
   $("#booking-form").hidden = s.booking_skjema === false;
+  // Egen logo fra Herah: i menyen, under Om og nederst
+  if (s.logo_url && s.logo_url.startsWith("/api/housemaster/files/")) {
+    for (const img of document.querySelectorAll("[data-logo]")) img.src = s.logo_url;
+    document.body.classList.add("custom-logo");
+  }
   const sc = safeUrl(s.lenker?.soundcloud);
   if (sc) { $("#sc-follow").href = sc; $("#sc-follow").hidden = false; }
   const LINKS = [["soundcloud", "SoundCloud"], ["mixcloud", "Mixcloud"], ["instagram", "Instagram"], ["spotify", "Spotify"], ["youtube", "YouTube"], ["facebook", "Facebook"]];
@@ -124,6 +129,7 @@ function renderTracks(list) {
       cover.append(img);
     } else cover.append(el("span", { "aria-hidden": "true" }, (t.title || "?").slice(0, 1).toUpperCase()));
     const chips = el("div", { class: "chips" },
+      t.author ? el("span", { class: "chip t" }, t.author) : null,
       t.bpm ? el("span", { class: "chip t" }, `${t.bpm} BPM`) : null,
       t.toneart ? el("span", { class: "chip" }, t.toneart) : null,
       t.type || t.aar ? el("span", { class: "chip" }, [t.type, t.aar].filter(Boolean).join(" · ")) : null);
@@ -247,7 +253,9 @@ async function main() {
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     const d = await r.json();
     setTexts(d.settings ?? {});
-    renderTracks(d.laater ?? []);
+    // Låtene du har limt inn i Herah (SoundCloud) først, så de fra samlingen Egne låter
+    const picked = (d.settings?.utvalgte ?? []).map((u) => ({ title: u.title, author: u.author, cover: u.cover, lenke: u.url }));
+    renderTracks([...picked, ...(d.laater ?? [])]);
     renderMixes(d.mixer ?? []);
     renderGigs(d.jobber ?? []);
   } catch (e) {
