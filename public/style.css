@@ -75,7 +75,7 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
   background-size: cover; background-position: center 40%; background-repeat: no-repeat; }
 .nav { padding-top: 20px; padding-bottom: 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
 .nav-logo { display: flex; align-items: center; }
-.nav-logo img { display: block; width: 122px; height: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6)); }
+.nav-logo img { display: block; width: 200px; height: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6)); }
 .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; font-size: 15px; font-weight: 600; }
 .nav-links a { color: var(--text); text-decoration: none; padding: 10px 0; text-shadow: 0 1px 6px rgba(0,0,0,0.7); }
 .nav-links a:hover { color: var(--accent-hover); }
@@ -214,4 +214,8 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
 /* Egen logo lastet opp i Herah */
 .custom-logo .om-img img { object-fit: contain; padding: 28px; }
 .custom-logo .footer-logo { object-fit: contain; object-position: center; }
-.custom-logo .nav-logo img { max-height: 110px; width: auto; max-width: 160px; }
+.custom-logo .nav-logo img { max-height: 180px; width: auto; max-width: 260px; }
+@media (max-width: 720px) {
+  .nav-logo img { width: 150px; }
+  .custom-logo .nav-logo img { max-height: 130px; max-width: 190px; }
+}
