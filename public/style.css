@@ -114,8 +114,9 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--mono); font-size: 12px; }
 .chip { padding: 4px 10px; border-radius: 999px; background: var(--line); color: var(--text); }
 .chip.t { color: var(--teal); }
-.play { margin-top: auto; min-height: 44px; border-radius: 999px; border: 1.5px solid var(--accent); background: transparent; color: var(--accent); font-weight: 600; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+.play { margin-top: 6px; min-height: 44px; border-radius: 999px; border: 1.5px solid var(--accent); background: transparent; color: var(--accent); font-weight: 600; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; }
 .play:hover { background: var(--accent); color: var(--bg); }
+.track-desc { margin: 4px 0 0; font-size: 15px; line-height: 1.55; color: var(--text-3); white-space: pre-line; overflow-wrap: anywhere; }
 .embed { border: 0; width: 100%; border-radius: 12px; display: block; background: var(--bg-2); }
 
 /* Mixer */
