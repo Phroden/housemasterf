@@ -142,6 +142,8 @@ function renderTracks(list) {
     } else if (link) {
       body.append(el("a", { class: "play", href: link, target: "_blank", rel: "noopener" }, "Hør låten ↗"));
     }
+    // Beskrivelsen fra Herah under knappen (ren tekst, linjeskift beholdes)
+    if (typeof t.beskrivelse === "string" && t.beskrivelse.trim()) body.append(el("p", { class: "track-desc" }, t.beskrivelse.trim()));
     return el("article", { class: "track" }, cover, body);
   }));
 }
@@ -254,7 +256,7 @@ async function main() {
     const d = await r.json();
     setTexts(d.settings ?? {});
     // Låtene du har limt inn i Herah (SoundCloud) først, så de fra samlingen Egne låter
-    const picked = (d.settings?.utvalgte ?? []).map((u) => ({ title: u.title, author: u.author, cover: u.cover, lenke: u.url }));
+    const picked = (d.settings?.utvalgte ?? []).map((u) => ({ title: u.title, author: u.author, cover: u.cover, lenke: u.url, beskrivelse: u.beskrivelse }));
     renderTracks([...picked, ...(d.laater ?? [])]);
     renderMixes(d.mixer ?? []);
     renderGigs(d.jobber ?? []);
