@@ -84,7 +84,7 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
 .hero-text { width: 100%; padding-bottom: 88px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; }
 .hero-text .eyebrow { margin: 0; font-size: 14px; }
 .hero-title { margin: 0; font-family: var(--display); font-weight: 900; font-size: clamp(32px, 9.6vw, 148px); line-height: 0.92; letter-spacing: -0.02em; }
-.hero-intro { margin: 0; max-width: 620px; font-size: 20px; color: var(--text-2); }
+.hero-intro { margin: 0; max-width: 620px; font-size: 20px; color: var(--text-2); white-space: pre-line; }
 .hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 
 /* Striper og bånd */
@@ -193,7 +193,7 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
 .om-text .eyebrow { margin: 0; }
 #om-paras { display: flex; flex-direction: column; gap: 20px; }
 #om-paras p, .lead { margin: 0; font-size: 19px; color: var(--text-3); }
-.lead { font-size: 18px; }
+.lead { font-size: 18px; white-space: pre-line; }
 .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
 .tag { padding: 8px 16px; border-radius: 999px; color: var(--bg); font-size: 14px; font-weight: 600; }
 .tag-line { border: 1.5px solid var(--accent); color: var(--accent); }
