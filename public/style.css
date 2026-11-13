@@ -99,12 +99,12 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
 .sec { padding-top: 96px; padding-bottom: 48px; }
 #musikk.sec { padding-top: 112px; }
 /* Plass til Jonas under booking: han stikker litt opp over hjørnet av boksen */
-.sec-last { padding-bottom: calc(var(--jonas-w) * 1.15 - 52px); }
-:root { --jonas-w: 280px; }
+.sec-last { padding-bottom: calc(var(--jonas-w) * 0.61 - var(--jonas-peek)); }
+:root { --jonas-w: 460px; --jonas-peek: 52px; }
 .ground { position: relative; }
-/* Føttene på platespillerne (ca. 6 % fra bunnen av bildet) står på den øverste linja; ledningen henger ned over linjene */
-.jonas { position: absolute; z-index: 2; width: var(--jonas-w); height: auto; right: max(16px, calc((100% - 1240px) / 2 + 40px));
-  bottom: calc(100% - var(--jonas-w) * 0.07); pointer-events: none; filter: drop-shadow(0 10px 18px rgba(0,0,0,0.55)); }
+/* Føttene på platespillerne (helt nederst i bildet) står på den øverste linja */
+.jonas { position: absolute; z-index: 2; width: var(--jonas-w); max-width: calc(100% - 32px); height: auto; left: max(16px, calc((100% - 1240px) / 2 + 24px));
+  bottom: calc(100% - 6px); pointer-events: none; filter: drop-shadow(0 10px 18px rgba(0,0,0,0.55)); }
 .sec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 40px; }
 
 /* Låter */
@@ -170,7 +170,7 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
 @media (prefers-reduced-motion: reduce) { .reel-icon { transition: none; } }
 /* Mobil: en rad du sveiper sidelengs i stedet for høye kort under hverandre */
 @media (max-width: 720px) {
-  :root { --jonas-w: 200px; }
+  :root { --jonas-w: 320px; --jonas-peek: 6px; }
   .reels { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin: 0 -24px; padding: 0 24px 8px; scroll-padding: 0 24px; scrollbar-width: thin; }
   .reel-item { flex: 0 0 72%; scroll-snap-align: start; }
 }
