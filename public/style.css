@@ -46,9 +46,6 @@ input, textarea, select, button { font: inherit; }
 .bg-pink { background: var(--pink); }
 .bg-teal { background: var(--teal); }
 .bg-cream { background: var(--text); }
-.f-accent { fill: var(--accent); }
-.f-pink { fill: var(--pink); }
-.f-teal { fill: var(--teal); }
 .muted { color: var(--muted); }
 
 .eyebrow { margin: 0 0 8px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
@@ -200,7 +197,7 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
 
 /* Booking */
 .booking { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: clamp(28px, 5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; }
-.ball { position: absolute; top: -36px; right: 40px; width: 72px; height: 72px; }
+.ball { position: absolute; top: -70px; right: 28px; width: 140px; height: auto; transform: rotate(-8deg); filter: drop-shadow(0 6px 14px rgba(0,0,0,0.5)); pointer-events: none; }
 .booking-text { display: flex; flex-direction: column; gap: 18px; }
 .booking-text .eyebrow { margin: 0; }
 .booking-text p.muted { margin: 8px 0 0; font-size: 16px; }
@@ -235,7 +232,7 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
   #musikk.sec { padding-top: 80px; }
   .om { gap: 40px; }
   .om-img { margin-left: 18px; margin-right: 0; }
-  .ball { right: 24px; }
+  .ball { right: 16px; top: -48px; width: 96px; }
   .gig-date { flex-basis: 100%; flex-direction: row; align-items: baseline; gap: 12px; }
 }
 
