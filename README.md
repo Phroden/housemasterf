@@ -13,6 +13,7 @@ Siden består bare av statiske filer (`public/`) uten byggetrinn. **Innholdet st
 | Samlingen **Spillejobber** (publiserte fra i dag og framover; *Lukket* = uten billetter) | Live |
 | **Låter på siden**: opptil 3 SoundCloud-lenker limt inn på siden Housemaster F (tittel og bilde hentes fra SoundCloud) | Øverst under Musikk |
 | **Last opp logo** på siden Housemaster F | Menyen, Om og bunnen |
+| **Bilde under Om** på siden Housemaster F | Om (i stedet for logoen der) |
 | **Reels fra Instagram**: opptil 6 lenker på siden Housemaster F | Reels (videoen lastes fra Instagram først når noen trykker) |
 | **Tekstene** på siden Housemaster F (intro, om, sjangre, booking, e-post, lenker) | Toppen, Om, Booking, bunnen |
 | Skjemaet → samlingen **Bookingforespørsler** + varsel på telefonen | Booking |

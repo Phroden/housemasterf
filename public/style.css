@@ -241,6 +241,8 @@ h2.big { font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; }
 
 /* Egen logo lastet opp i Herah */
 .custom-logo .om-img img { object-fit: contain; padding: 28px; }
+/* Eget bilde under Om: fyller rammen (går foran logoen) */
+.om-img.om-photo img, .custom-logo .om-img.om-photo img { object-fit: cover; padding: 0; mix-blend-mode: normal; }
 .custom-logo .footer-logo { object-fit: contain; object-position: center; }
 /* Fast høyde, så også små bilder blir store (bredden følger bildet, men høyst 280 px) */
 .custom-logo .nav-logo img { height: 170px; width: auto; max-width: 280px; object-fit: contain; object-position: left center; }

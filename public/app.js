@@ -109,6 +109,15 @@ function setTexts(s) {
     for (const img of document.querySelectorAll("[data-logo]")) img.src = s.logo_url;
     document.body.classList.add("custom-logo");
   }
+  // Eget bilde under Om (går foran logoen der); lastes det ikke, vises logoen igjen
+  if (s.om_bilde_url && s.om_bilde_url.startsWith("/api/housemaster/files/")) {
+    const img = document.querySelector(".om-img img");
+    const before = img.src;
+    img.addEventListener("error", () => { img.src = before; img.closest(".om-img").classList.remove("om-photo"); }, { once: true });
+    img.src = s.om_bilde_url;
+    img.alt = "Housemaster F";
+    img.closest(".om-img").classList.add("om-photo");
+  }
   const sc = safeUrl(s.lenker?.soundcloud);
   if (sc) { $("#sc-follow").href = sc; $("#sc-follow").hidden = false; }
   const LINKS = [["soundcloud", "SoundCloud"], ["mixcloud", "Mixcloud"], ["instagram", "Instagram"], ["spotify", "Spotify"], ["youtube", "YouTube"], ["facebook", "Facebook"]];
