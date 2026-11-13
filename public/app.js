@@ -191,6 +191,55 @@ function renderMixes(list) {
   show(list[0]);
 }
 
+// ---------------------------------------------------------------------------
+// Reels fra Instagram: et kort per reel, videoen bygges inn først når noen trykker (som spillerne)
+// ---------------------------------------------------------------------------
+function reelEmbed(link) {
+  const u = safeUrl(link);
+  if (!u) return null;
+  const url = new URL(u);
+  const m = url.pathname.match(/^\/(reel|p)\/([A-Za-z0-9_-]{5,40})\/$/);
+  if (url.hostname !== "www.instagram.com" || !m) return null;
+  return { page: `https://www.instagram.com/${m[1]}/${m[2]}/`, embed: `https://www.instagram.com/${m[1]}/${m[2]}/embed/` };
+}
+
+function renderReels(list, profile) {
+  const items = (list ?? []).map(reelEmbed).filter(Boolean);
+  $("#reels").hidden = !items.length;
+  for (const a of document.querySelectorAll('[data-nav="reels"]')) a.hidden = !items.length;
+  const follow = $("#reels-follow");
+  const p = safeUrl(profile);
+  if (p) { follow.querySelector("a").href = p; follow.hidden = false; }
+  $("#reels-list").replaceChildren(...items.map((r, i) => {
+    const btn = el("button", { type: "button", class: `reel-play ${COLORS[i % 3]}`, "aria-label": `Spill av reel ${i + 1} fra Instagram` },
+      el("span", { class: "reel-icon", "aria-hidden": "true" }, svgPlay()),
+      el("span", { class: "reel-label" }, "Se reelen"),
+      el("span", { class: "reel-note" }, "Lastes fra Instagram"));
+    const card = el("div", { class: "reel" }, btn);
+    btn.addEventListener("click", () => {
+      const f = el("iframe", { class: "reel-frame", src: r.embed, title: `Reel ${i + 1} fra Instagram`, loading: "lazy", allow: "autoplay; encrypted-media; fullscreen; picture-in-picture", scrolling: "no", referrerpolicy: "strict-origin-when-cross-origin" });
+      btn.replaceWith(f);
+    });
+    return el("div", { class: "reel-item" }, card, el("a", { class: "reel-link", href: r.page, target: "_blank", rel: "noopener" }, "Åpne på Instagram ↗"));
+  }));
+}
+
+function svgPlay() {
+  const s = svg("svg", { width: "34", height: "34", viewBox: "0 0 24 24", fill: "currentColor" });
+  s.append(svg("path", { d: "M7 4.5v15l13-7.5z" }));
+  return s;
+}
+
+/** Seksjonsnumrene (01 — …) følger seksjonene som vises */
+function renumber() {
+  let n = 0;
+  for (const sec of document.querySelectorAll("main section")) {
+    const num = sec.querySelector(".eyebrow .num");
+    if (!num || sec.hidden) continue;
+    num.textContent = String(++n).padStart(2, "0");
+  }
+}
+
 function renderGigs(list) {
   const ul = $("#gigs");
   if (!list.length) {
@@ -259,7 +308,9 @@ async function main() {
     const picked = (d.settings?.utvalgte ?? []).map((u) => ({ title: u.title, author: u.author, cover: u.cover, lenke: u.url, beskrivelse: u.beskrivelse }));
     renderTracks([...picked, ...(d.laater ?? [])]);
     renderMixes(d.mixer ?? []);
+    renderReels(d.settings?.reels, d.settings?.lenker?.instagram);
     renderGigs(d.jobber ?? []);
+    renumber();
   } catch (e) {
     console.warn("Kunne ikke hente innholdet:", e);
     $("#gigs").replaceChildren(el("li", { class: "gig-empty" }, "Kunne ikke hente spillejobbene akkurat nå."));

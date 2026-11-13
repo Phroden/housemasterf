@@ -29,6 +29,7 @@
       <div class="nav-links">
         <a href="#musikk" data-nav="laater">Musikk</a>
         <a href="#mixer" data-nav="mixer">Mixer</a>
+        <a href="#reels" data-nav="reels" hidden>Reels</a>
         <a href="#live">Live</a>
         <a href="#om">Om</a>
         <a href="#booking" class="pill pill-accent">Booking</a>
@@ -55,7 +56,7 @@
 <section id="musikk" class="sec wrap" hidden>
   <div class="sec-head">
     <div>
-      <p class="eyebrow">01 — Egne låter</p>
+      <p class="eyebrow"><span class="num">01</span> — Egne låter</p>
       <h2>Fra studioet</h2>
     </div>
     <a href="#" class="btn btn-sc" id="sc-follow" hidden target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 15v2M6 12v5M9 10v7M12 8v9"></path><path d="M14 8.5a5 5 0 0 1 7 4.5 3 3 0 0 1-3 4h-4z"></path></svg>Følg på SoundCloud</a>
@@ -64,7 +65,7 @@
 </section>
 
 <section id="mixer" class="sec wrap" hidden>
-  <p class="eyebrow">02 — DJ-mixer</p>
+  <p class="eyebrow"><span class="num">02</span> — DJ-mixer</p>
   <h2 class="mb">Siste mix</h2>
   <div class="mix-feature" id="mix-feature">
     <div class="mix-info">
@@ -82,8 +83,15 @@
   <div class="mix-list" id="mix-list"></div>
 </section>
 
+<section id="reels" class="sec wrap" hidden>
+  <p class="eyebrow"><span class="num">03</span> — Fra Instagram</p>
+  <h2 class="mb">Reels</h2>
+  <div class="reels" id="reels-list"></div>
+  <p class="reels-follow" id="reels-follow" hidden><a href="#" target="_blank" rel="noopener">Følg på Instagram ↗</a></p>
+</section>
+
 <section id="live" class="sec wrap">
-  <p class="eyebrow">03 — Kommende spillejobber</p>
+  <p class="eyebrow"><span class="num">03</span> — Kommende spillejobber</p>
   <h2 class="mb-s">Live</h2>
   <ul class="gigs" id="gigs"><li class="gig-empty">Henter spillejobbene …</li></ul>
 </section>
@@ -91,7 +99,7 @@
 <section id="om" class="sec wrap om">
   <div class="om-img"><img data-logo src="/img/logo.webp" alt="DJ Housemaster F-logo: to løver rundt et rosa hjerte med en vinylplate" width="800" height="800" loading="lazy"></div>
   <div class="om-text">
-    <p class="eyebrow">04 — Om</p>
+    <p class="eyebrow"><span class="num">04</span> — Om</p>
     <h2><span data-text="om_tittel">Fire-på-gulvet,</span><br><span class="c-pink" data-text="om_uthevet">alltid.</span></h2>
     <div id="om-paras">
       <p>Housemaster F er DJ-alteregoet til Frode Werner. Settene henter fra house, disco og EDM – fra varme discosamples til store drops – og bygges for å holde dansegulvet fullt fra første til siste låt.</p>
@@ -105,7 +113,7 @@
   <div class="booking">
     <svg class="ball" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#9C94C6"></circle><rect x="34" y="26" width="16" height="12" class="f-teal"></rect><rect x="50" y="50" width="16" height="12" class="f-pink"></rect><rect x="18" y="62" width="16" height="12" class="f-accent"></rect><g fill="none" stroke="#0E0D0C" stroke-width="2.5"><line x1="10.8" y1="26" x2="89.2" y2="26"></line><line x1="5.6" y1="38" x2="94.4" y2="38"></line><line x1="4" y1="50" x2="96" y2="50"></line><line x1="5.6" y1="62" x2="94.4" y2="62"></line><line x1="10.8" y1="74" x2="89.2" y2="74"></line><line x1="50" y1="4" x2="50" y2="96"></line><ellipse cx="50" cy="50" rx="16" ry="46"></ellipse><ellipse cx="50" cy="50" rx="32" ry="46"></ellipse><circle cx="50" cy="50" r="46"></circle></g><circle cx="32" cy="28" r="6" fill="#FFFFFF" opacity="0.75"></circle></svg>
     <div class="booking-text">
-      <p class="eyebrow">05 — Booking</p>
+      <p class="eyebrow"><span class="num">05</span> — Booking</p>
       <h2 class="big" id="booking-title">Trenger festen en <span class="c-accent">DJ?</span></h2>
       <p class="lead" data-text="booking_tekst">Klubb, bar, firmafest eller bursdag – send noen ord om dato, sted og stemning, så tar jeg kontakt.</p>
       <p class="muted" id="booking-mail" hidden>E-post: <a href="#"></a></p>

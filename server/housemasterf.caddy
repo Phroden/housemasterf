@@ -8,8 +8,8 @@ housemasterf.frodewerner.no {
 		X-Content-Type-Options "nosniff"
 		Referrer-Policy "strict-origin-when-cross-origin"
 		Permissions-Policy "camera=(), microphone=(), geolocation=()"
-		# Spillerne (SoundCloud, Mixcloud, Spotify, YouTube) lastes først når noen trykker «Spill av»
-		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://w.soundcloud.com https://player-widget.mixcloud.com https://open.spotify.com https://www.youtube-nocookie.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'"
+		# Spillerne (SoundCloud, Mixcloud, Spotify, YouTube) og reels (Instagram) lastes først når noen trykker
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://w.soundcloud.com https://player-widget.mixcloud.com https://open.spotify.com https://www.youtube-nocookie.com https://www.instagram.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'"
 		-Server
 	}
 

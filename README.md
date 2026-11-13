@@ -13,13 +13,14 @@ Siden består bare av statiske filer (`public/`) uten byggetrinn. **Innholdet st
 | Samlingen **Spillejobber** (publiserte fra i dag og framover; *Lukket* = uten billetter) | Live |
 | **Låter på siden**: opptil 3 SoundCloud-lenker limt inn på siden Housemaster F (tittel og bilde hentes fra SoundCloud) | Øverst under Musikk |
 | **Last opp logo** på siden Housemaster F | Menyen, Om og bunnen |
+| **Reels fra Instagram**: opptil 6 lenker på siden Housemaster F | Reels (videoen lastes fra Instagram først når noen trykker) |
 | **Tekstene** på siden Housemaster F (intro, om, sjangre, booking, e-post, lenker) | Toppen, Om, Booking, bunnen |
 | Skjemaet → samlingen **Bookingforespørsler** + varsel på telefonen | Booking |
 
 Endringer i Herah vises på nettsiden i løpet av et halvt minutt. Uten svar fra Herah viser siden
 standardtekstene som står i `index.html`, og skjuler musikk og mixer.
 
-Spillere bygges inn fra SoundCloud, Mixcloud, Spotify og YouTube (youtube-nocookie) først når noen trykker
+Spillere bygges inn fra SoundCloud, Mixcloud, Spotify og YouTube (youtube-nocookie) – og reels fra Instagram – først når noen trykker
 «Spill av», så besøkende ikke sendes til andre tjenester før de velger det. Andre lenker åpnes i en ny fane.
 
 ## Slik henger det sammen
