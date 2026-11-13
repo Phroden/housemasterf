@@ -204,23 +204,40 @@ function reelEmbed(link) {
 }
 
 function renderReels(list, profile) {
-  const items = (list ?? []).map(reelEmbed).filter(Boolean);
+  // Fra Herah: { url, title, cover, cover_pos } (eldre Herah: bare lenker)
+  const items = (list ?? []).map((x) => {
+    const r = reelEmbed(typeof x === "string" ? x : x?.url);
+    if (!r) return null;
+    const cover = typeof x?.cover === "string" && x.cover.startsWith("/api/housemaster/files/") ? x.cover : null;
+    return { ...r, title: typeof x?.title === "string" ? x.title.trim() : "", cover, pos: Number(x?.cover_pos ?? 50) };
+  }).filter(Boolean);
   $("#reels").hidden = !items.length;
   for (const a of document.querySelectorAll('[data-nav="reels"]')) a.hidden = !items.length;
   const follow = $("#reels-follow");
   const p = safeUrl(profile);
   if (p) { follow.querySelector("a").href = p; follow.hidden = false; }
   $("#reels-list").replaceChildren(...items.map((r, i) => {
-    const btn = el("button", { type: "button", class: `reel-play ${COLORS[i % 3]}`, "aria-label": `Spill av reel ${i + 1} fra Instagram` },
+    const name = r.title || `Reel ${i + 1}`;
+    const btn = el("button", { type: "button", class: `reel-play ${COLORS[i % 3]}${r.cover ? " has-cover" : ""}`, "aria-label": `Spill av ${name} fra Instagram` });
+    if (r.cover) {
+      // Toppbildet fra Herah som cover; forsvinner bildet, vises fargekortet
+      const img = el("img", { class: "reel-cover", src: r.cover, alt: "", loading: "lazy" });
+      img.style.objectPosition = `center ${Number.isFinite(r.pos) ? r.pos : 50}%`;
+      img.addEventListener("error", () => { img.remove(); btn.classList.remove("has-cover"); });
+      btn.append(img);
+    }
+    btn.append(
       el("span", { class: "reel-icon", "aria-hidden": "true" }, svgPlay()),
       el("span", { class: "reel-label" }, "Se reelen"),
       el("span", { class: "reel-note" }, "Lastes fra Instagram"));
     const card = el("div", { class: "reel" }, btn);
     btn.addEventListener("click", () => {
-      const f = el("iframe", { class: "reel-frame", src: r.embed, title: `Reel ${i + 1} fra Instagram`, loading: "lazy", allow: "autoplay; encrypted-media; fullscreen; picture-in-picture", scrolling: "no", referrerpolicy: "strict-origin-when-cross-origin" });
+      const f = el("iframe", { class: "reel-frame", src: r.embed, title: `${name} fra Instagram`, loading: "lazy", allow: "autoplay; encrypted-media; fullscreen; picture-in-picture", scrolling: "no", referrerpolicy: "strict-origin-when-cross-origin" });
       btn.replaceWith(f);
     });
-    return el("div", { class: "reel-item" }, card, el("a", { class: "reel-link", href: r.page, target: "_blank", rel: "noopener" }, "Åpne på Instagram ↗"));
+    return el("div", { class: "reel-item" }, card,
+      r.title ? el("strong", { class: "reel-title" }, r.title) : null,
+      el("a", { class: "reel-link", href: r.page, target: "_blank", rel: "noopener" }, "Åpne på Instagram ↗"));
   }));
 }
 
@@ -308,7 +325,7 @@ async function main() {
     const picked = (d.settings?.utvalgte ?? []).map((u) => ({ title: u.title, author: u.author, cover: u.cover, lenke: u.url, beskrivelse: u.beskrivelse }));
     renderTracks([...picked, ...(d.laater ?? [])]);
     renderMixes(d.mixer ?? []);
-    renderReels(d.settings?.reels, d.settings?.lenker?.instagram);
+    renderReels(d.reels ?? d.settings?.reels, d.settings?.lenker?.instagram);
     renderGigs(d.jobber ?? []);
     renumber();
   } catch (e) {
