@@ -48,9 +48,17 @@ CSP-en (i `server/housemasterf.caddy`) tillater bare egne filer og de fire spill
 
 ## Oppdatere
 
-```bash
-bash /srv/housemasterf/server/deploy.sh
-```
+Siden oppdaterer seg selv: `housemasterf-update.timer` henter `main` fra GitHub hvert 5. minutt
+(`server/auto-update.sh`) og gjør ingenting når det ikke er noe nytt. Det du slår sammen på GitHub, er altså
+på nett innen fem minutter.
+
+- Den kjører som brukeren `housemasterf`, som bare kan skrive i `/srv/housemasterf` – aldri som root.
+- Endringer i **Caddy-oppsettet** eller **timeren** tas ikke i bruk av seg selv. Da (eller for å oppdatere med en gang):
+  ```bash
+  bash /srv/housemasterf/server/deploy.sh
+  ```
+- Loggen: `journalctl -u housemasterf-update` · neste kjøring: `systemctl list-timers housemasterf-update.timer`
+- Slå av: `systemctl disable --now housemasterf-update.timer`
 
 ## Se siden lokalt
 
@@ -66,7 +74,8 @@ HERAH=http://localhost:8080 deno run --allow-net --allow-read --allow-env tools/
 - `public/index.html`, `style.css`, `app.js` – siden (ingen inline skript eller stil, så CSP-en kan være streng)
 - `public/img/` – toppbildet, logoene, delingsbildet og ikonene (fra utkastet)
 - `public/fonts/` – Unbounded, Inter og JetBrains Mono, lagret her (SIL OFL 1.1, se `OFL.txt`) – ingen Google Fonts
-- `server/housemasterf.caddy` – Caddy-oppsettet, `server/deploy.sh` – oppdatering
+- `server/housemasterf.caddy` – Caddy-oppsettet, `server/deploy.sh` – oppsett og oppdatering (som root)
+- `server/auto-update.sh` + `housemasterf-update.service|timer` – automatisk oppdatering hvert 5. minutt
 - `tools/serve.ts` – lokal forhåndsvisning
 
 Farger og skrift justeres øverst i `public/style.css` (`--accent`, `--pink`, `--teal` …).

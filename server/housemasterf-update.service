@@ -1,0 +1,25 @@
+# Installeres av server/deploy.sh. Henter nye versjoner av musikksiden (server/auto-update.sh).
+[Unit]
+Description=Housemaster F: hent nye versjoner fra GitHub
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=housemasterf
+Group=housemasterf
+UMask=0022
+ExecStart=/srv/housemasterf/server/auto-update.sh
+# Kan bare skrive i sin egen mappe
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/srv/housemasterf
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+CapabilityBoundingSet=
+TimeoutStartSec=120
